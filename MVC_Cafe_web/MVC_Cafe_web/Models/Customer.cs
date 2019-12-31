@@ -23,7 +23,7 @@ namespace MVC_Cafe_web.Models
         public int cusID { get; set; }
         public string cName { get; set; }
         public int cphone { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
     }
