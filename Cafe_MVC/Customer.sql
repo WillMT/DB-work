@@ -2,6 +2,7 @@
 (
 	[cusID] int IDENTITY (1,1) NOT NULL,
 	[cName] NVARCHAR (50) not NULL,
-	[cphone] int not null,
+	[cphone] int null,
+	[cType] NVARCHAR(15) DEFAULT 'customer',
 	primary key clustered ([cusID] ASC) 
 )
