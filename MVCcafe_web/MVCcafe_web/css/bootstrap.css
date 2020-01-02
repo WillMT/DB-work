@@ -5422,11 +5422,10 @@ button.close {
   position: relative;
   -webkit-transition: 0.6s ease-in-out left;
   transition: 0.6s ease-in-out left;
-  height: 1080px;
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  line-height: 1;
+  line-height: 10;
 }
 .carousel-inner > .active,
 .carousel-inner > .next,
