@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Cafe_MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Cafe_MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="cusID" />
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Cafe_MVCEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Cafe_MVCDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Item" EntityType="Self.Item" />
           <EntitySet Name="Order" EntityType="Self.Order" />
@@ -203,7 +203,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Cafe_MVCModelStoreContainer" CdmEntityContainer="Cafe_MVCEntities">
+        <EntityContainerMapping StorageEntityContainer="Cafe_MVCModelStoreContainer" CdmEntityContainer="Cafe_MVCDBEntities">
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="Cafe_MVCModel.Customer">
               <MappingFragment StoreEntitySet="Customer">

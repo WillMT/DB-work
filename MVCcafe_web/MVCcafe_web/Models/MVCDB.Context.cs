@@ -13,10 +13,10 @@ namespace MVCcafe_web.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Cafe_MVCEntities : DbContext
+    public partial class Cafe_MVCDBEntities : DbContext
     {
-        public Cafe_MVCEntities()
-            : base("name=Cafe_MVCEntities")
+        public Cafe_MVCDBEntities()
+            : base("name=Cafe_MVCDBEntities")
         {
         }
     

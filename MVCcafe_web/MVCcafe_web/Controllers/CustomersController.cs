@@ -12,7 +12,7 @@ namespace MVCcafe_web.Controllers
 {
     public class CustomersController : Controller
     {
-        private Cafe_MVCEntities db = new Cafe_MVCEntities();
+        private Cafe_MVCDBEntities db = new Cafe_MVCDBEntities();
 
         // GET: Customers
         public ActionResult Index()

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\will\Desktop\plymouth\DB\MVCcafe\MVCcafe_web\MVCcafe_web\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\will\Desktop\plymouth\DB\MVCcafe\MVCcafe_web\MVCcafe_web\Models\MVCDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
