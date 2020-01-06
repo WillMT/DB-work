@@ -17,3 +17,4 @@ C:\Users\will\Desktop\plymouth\DB\MVCcafe\Cafe_MVC\obj\Debug\Model.xml
 C:\Users\will\Desktop\plymouth\DB\MVCcafe\Cafe_MVC\obj\Debug\refactor.xml
 C:\Users\will\Desktop\plymouth\DB\MVCcafe\Cafe_MVC\obj\Debug\postdeploy.sql
 C:\Users\will\Desktop\plymouth\DB\MVCcafe\Cafe_MVC\obj\Debug\predeploy.sql
+C:\Users\will\Desktop\plymouth\DB\MVCcafe\Cafe_MVC\obj\Debug\Cafe_MVC.sqlprojAssemblyReference.cache

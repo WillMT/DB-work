@@ -13,10 +13,10 @@ namespace MVCcafe_web.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Cafe_MVCDBEntities : DbContext
+    public partial class Cafe_MVCEntities : DbContext
     {
-        public Cafe_MVCDBEntities()
-            : base("name=Cafe_MVCDBEntities")
+        public Cafe_MVCEntities()
+            : base("name=Cafe_MVCEntities")
         {
         }
     
@@ -25,7 +25,7 @@ namespace MVCcafe_web.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<admin> admin { get; set; }
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderItem> OrderItem { get; set; }

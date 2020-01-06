@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Cafe 'Casual'", "Index", new { controller = "Home" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tea-room 'Casual'", "Index", new { controller = "Home" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -41,10 +41,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Food / Drink Meun <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li id="Food">
-                                @Html.ActionLink("Food", "Food", "Menu")
+                                @Html.ActionLink("Snacks", "Food", "Menu")
                             </li>
                             <li id="Drink">
-                                @Html.ActionLink("Drink", "Drink", "Menu")
+                                @Html.ActionLink("Drinks", "Drink", "Menu")
                             </li>  
                         </ul>
                     </li>
@@ -70,8 +70,15 @@
         <hr>
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright Cafe 'Casual' 2019</p>
+                <div class="col-lg-9">
+                    <p>Copyright Tea-room 'Casual' 2019</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div id="admin">
+                        @Html.ActionLink("Management", "Index", "Admin")
+                    </div>
                 </div>
             </div>
         </footer>

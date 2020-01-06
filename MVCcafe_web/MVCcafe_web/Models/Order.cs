@@ -21,10 +21,10 @@ namespace MVCcafe_web.Models
         }
     
         public int orderID { get; set; }
-        public int cusID { get; set; }
+        public string cName { get; set; }
+        public string cphone { get; set; }
         public System.DateTime orderDate { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItem { get; set; }
     }

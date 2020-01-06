@@ -4,15 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Cafe_MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Customer">
+      <Schema Namespace="Cafe_MVCDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
           <Key>
-            <PropertyRef Name="cusID" />
+            <PropertyRef Name="adminID" />
           </Key>
-          <Property Name="cusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="cphone" Type="int" Nullable="false" />
-          <Property Name="cType" Type="nvarchar" MaxLength="15" />
+          <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="aPwd" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -29,7 +28,8 @@
             <PropertyRef Name="orderID" />
           </Key>
           <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cusID" Type="int" Nullable="false" />
+          <Property Name="cName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cphone" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="orderDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItem">
@@ -42,18 +42,6 @@
           <Property Name="itemQty" Type="int" Nullable="false" />
           <Property Name="lastUpdateDate" Type="date" Nullable="false" />
         </EntityType>
-        <Association Name="FK_dbo_Order_dbo_Customer_cusID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="cusID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="cusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_OrderItem_dbo_Item_itemID">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
@@ -78,15 +66,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Cafe_MVCModelStoreContainer">
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="Cafe_MVCDBModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_dbo_Order_dbo_Customer_cusID" Association="Self.FK_dbo_Order_dbo_Customer_cusID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_OrderItem_dbo_Item_itemID" Association="Self.FK_dbo_OrderItem_dbo_Item_itemID">
             <End Role="Item" EntitySet="Item" />
             <End Role="OrderItem" EntitySet="OrderItem" />
@@ -100,16 +84,14 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Cafe_MVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Customer">
+      <Schema Namespace="Cafe_MVCDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
           <Key>
-            <PropertyRef Name="cusID" />
+            <PropertyRef Name="adminID" />
           </Key>
-          <Property Name="cusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cphone" Type="Int32" Nullable="false" />
-          <Property Name="cType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_dbo_Order_dbo_Customer_cusID" FromRole="Customer" ToRole="Order" />
+          <Property Name="adminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -127,9 +109,9 @@
             <PropertyRef Name="orderID" />
           </Key>
           <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cusID" Type="Int32" Nullable="false" />
+          <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cphone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Order_dbo_Customer_cusID" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="OrderItem" Relationship="Self.FK_dbo_OrderItem_dbo_Order_OrderID" FromRole="Order" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="OrderItem">
@@ -144,18 +126,6 @@
           <NavigationProperty Name="Item" Relationship="Self.FK_dbo_OrderItem_dbo_Item_itemID" FromRole="OrderItem" ToRole="Item" />
           <NavigationProperty Name="Order" Relationship="Self.FK_dbo_OrderItem_dbo_Order_OrderID" FromRole="OrderItem" ToRole="Order" />
         </EntityType>
-        <Association Name="FK_dbo_Order_dbo_Customer_cusID">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="cusID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="cusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_OrderItem_dbo_Item_itemID">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
@@ -180,15 +150,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Cafe_MVCDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
+        <EntityContainer Name="Cafe_MVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="Item" EntityType="Self.Item" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" />
-          <AssociationSet Name="FK_dbo_Order_dbo_Customer_cusID" Association="Self.FK_dbo_Order_dbo_Customer_cusID">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_OrderItem_dbo_Item_itemID" Association="Self.FK_dbo_OrderItem_dbo_Item_itemID">
             <End Role="Item" EntitySet="Item" />
             <End Role="OrderItem" EntitySet="OrderItem" />
@@ -203,19 +169,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Cafe_MVCModelStoreContainer" CdmEntityContainer="Cafe_MVCDBEntities">
-          <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="Cafe_MVCModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="cusID" ColumnName="cusID" />
-                <ScalarProperty Name="cName" ColumnName="cName" />
-                <ScalarProperty Name="cphone" ColumnName="cphone" />
-                <ScalarProperty Name="cType" ColumnName="cType" />
+        <EntityContainerMapping StorageEntityContainer="Cafe_MVCDBModelStoreContainer" CdmEntityContainer="Cafe_MVCEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="Cafe_MVCDBModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="adminID" ColumnName="adminID" />
+                <ScalarProperty Name="aName" ColumnName="aName" />
+                <ScalarProperty Name="aPwd" ColumnName="aPwd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Item">
-            <EntityTypeMapping TypeName="Cafe_MVCModel.Item">
+            <EntityTypeMapping TypeName="Cafe_MVCDBModel.Item">
               <MappingFragment StoreEntitySet="Item">
                 <ScalarProperty Name="itemID" ColumnName="itemID" />
                 <ScalarProperty Name="itemType" ColumnName="itemType" />
@@ -226,16 +191,17 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="Cafe_MVCModel.Order">
+            <EntityTypeMapping TypeName="Cafe_MVCDBModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="orderID" ColumnName="orderID" />
-                <ScalarProperty Name="cusID" ColumnName="cusID" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+                <ScalarProperty Name="cphone" ColumnName="cphone" />
                 <ScalarProperty Name="orderDate" ColumnName="orderDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderItem">
-            <EntityTypeMapping TypeName="Cafe_MVCModel.OrderItem">
+            <EntityTypeMapping TypeName="Cafe_MVCDBModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItem">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="itemID" ColumnName="itemID" />
