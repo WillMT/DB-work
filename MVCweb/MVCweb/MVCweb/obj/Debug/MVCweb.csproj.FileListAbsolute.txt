@@ -1,2 +1,0 @@
-C:\Users\will\Desktop\plymouth\DB\MVCcafe\MVCweb\MVCweb\MVCweb\obj\Debug\MVCweb.csproj.CoreCompileInputs.cache
-C:\Users\will\Desktop\plymouth\DB\MVCcafe\MVCweb\MVCweb\MVCweb\obj\Debug\MVCweb.csprojAssemblyReference.cache
