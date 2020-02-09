@@ -1,0 +1,37 @@
+﻿@model List<MVC_web.Models.DB.Item>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>item list</h2>
+<table class="table">
+    @if (ViewBag.ResultMessage != null)
+    {
+        @Html.Label("info",(String)ViewBag.ResultMessage, new { @class = "text-info"})
+    }
+    <thead>
+        <tr>
+            <td>itemID</td>
+            <td>itemName</td>
+            <td>qty</td>
+            <td>Edit / Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in this.Model)
+        {
+            <tr>
+                <td>@item.itemID</td>
+                <td>@item.itemName</td>
+                <td>@item.qty</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.itemID }, new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.itemID }, new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("Upload Image","Upload",new { id = item.itemID}, new { @Class = "btn btn-ouline-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
