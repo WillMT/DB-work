@@ -3,34 +3,66 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
+<table>
+    <div class="row">
+        <div class="col-sm-9"><h2 class="text-center">Item information</h2></div>
+        <div class="col-sm-3">
+            @Html.ActionLink("Add new item", "Create", "item",new { @class = "btn btn-primary btn-block" })
+        </div>
+    </div>
+</table>
 
-<h2>item list</h2>
+
 <table class="table">
     @if (ViewBag.ResultMessage != null)
     {
-        @Html.Label("info",(String)ViewBag.ResultMessage, new { @class = "text-info"})
+        @Html.Label("info",(String)ViewBag.ResultMessage, new { @class = "text-danger text-center"})
     }
+
     <thead>
         <tr>
-            <td>itemID</td>
-            <td>itemName</td>
-            <td>qty</td>
-            <td>Edit / Delete</td>
+            <td width="5%" ><b>@Html.ActionLink("ID","Index",new { order = ViewBag.IdSort })</b></td>
+            <td width="10%"><b>Item Name</b></td>
+            <td width="5%"><b>@Html.ActionLink("Type","Index", new { order = ViewBag.TypeSort })</b></td>
+            <td width="27%"><b>Description</b></td>
+            <td width="5%"><b>Quantity</b></td>
+            <td width="8%"><b>Price</b></td>
+            <td width="15%"><b>image</b></td>
+            <td width="25%"><b>Modify function</b></td>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in this.Model)
         {
-            <tr>
-                <td>@item.itemID</td>
-                <td>@item.itemName</td>
-                <td>@item.qty</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.itemID }, new { @class = "btn btn-outline-success" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.itemID }, new { @class = "btn btn-outline-success" })
-                    @Html.ActionLink("Upload Image","Upload",new { id = item.itemID}, new { @Class = "btn btn-ouline-success" })
-                </td>
-            </tr>
+
+                <tr>
+                    <td>@item.itemID</td>
+                    <td>@item.itemName</td>
+                    <td>@item.itemType</td>
+                    <td>@item.iDesc</td>
+                    <td>@item.qty</td>
+                    <td>$ @item.iPrice</td>
+                    <td>
+                        @if (item.imgdata != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.imgdata);
+                            var imgsrc = String.Format("data:image/jpg;base64,{0}", base64);
+                            <img src="@imgsrc" width="150px" />
+                        }
+                        else
+                        {
+                            <p>no image</p>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.itemID }, new { @class = "btn btn-sm btn-outline-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.itemID }, new { @class = "btn btn-sm btn-outline-danger" })
+                        @Html.ActionLink("Upload Image", "Upload", new { id = item.itemID }, new { @Class = "btn btn-sm btn-outline-info" })
+                    </td>
+                </tr>
+            
+           
         }
     </tbody>
 </table>
