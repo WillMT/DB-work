@@ -14,6 +14,7 @@ namespace MVC_web.Controllers
         {
             ViewBag.ResultMessage = TempData["ResultMessage"];
             Models.DB.MVCEntities db = new Models.DB.MVCEntities();
+
             var itemList = (from s in db.Item select s);
             ViewBag.IdSort = String.IsNullOrEmpty(order) ? "idnew" : "";
             ViewBag.TypeSort = order == "Drink" ? "Food" : "Drink";

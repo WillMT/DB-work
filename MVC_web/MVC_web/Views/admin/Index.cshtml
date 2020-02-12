@@ -1,0 +1,54 @@
+﻿@model MVC_web.Models.DB.admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <div class="card rounded shadow shadow-sm">
+                            
+
+                            <div class="card-header">
+                                <h2 class="mb-0 text-center">Cafe Bouquet</h2>
+                                <h2 class="mb-0 text-center">Login portal</h2>
+                            </div>
+                            <div class="card-body">
+                                @if (ViewBag.ResultMessage != null)
+                                {
+                                    @Html.Label("info", (String)ViewBag.ResultMessage, new { @class = "text-danger text-center" })
+                                }
+                                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                    <div class="form-group">
+                                        @Html.Label("UserName", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.aName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.aName, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.Label("Password", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.aPwd, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.aPwd, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div>
+                                        <label class="custom-control custom-checkbox">
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-lg btn-block float-right" id="btnLogin">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
