@@ -9,14 +9,14 @@ namespace MVC_web.Controllers
 {
     public class adminController : Controller
     {
-        // GET: admin
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.ResultMessage = TempData["ResultMessage"];
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Index(Models.DB.admin postback)
         {
             ViewBag.ResultMessage = TempData["ResultMessage"];
@@ -36,7 +36,7 @@ namespace MVC_web.Controllers
                 }
             }
         }
-
+        */
         public ActionResult Login()
         {
             ViewBag.ResultMessage = TempData["ResultMessage"];
@@ -45,45 +45,59 @@ namespace MVC_web.Controllers
         [HttpPost]
         public ActionResult Login(String Username, String Password)
         {
+            ViewBag.ResultMessage = TempData["ResultMessage"];
+            Models.DB.MVCEntities db = new Models.DB.MVCEntities();
+            var result = (from s in db.admin where s.aName == Username && s.aPwd == Password select s).FirstOrDefault();
+            bool valid = CheckUr(Username,Password);
+            string AN = string.Empty;
+            if (valid && result !=null)
             {
-                bool Flag = PM.CheckUserID(UserID);
-                string LevelID = string.Empty;
-                if (Flag)
+                AN = result.adminID.ToString();
+                LoginProcess(AN, Username, false); //表單驗證方法
+                Session["Username"] = Username;
+                TempData["ResultMessage"] = String.Format("Username : {0} password not match.", result.aName);
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                TempData["ResultMessage"] = String.Format("username and password invalid.");
+                return RedirectToAction("Index", "Admin");
+            }
+
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+            return RedirectToAction("Index", "Home");
+        }
+        private Boolean CheckUr(string username, string password)
+        {
+            using (Models.DB.MVCEntities db = new Models.DB.MVCEntities())
+            {
+                var result = (from s in db.admin where s.aName == username && s.aPwd == password select s).FirstOrDefault();
+                if (result != null)
                 {
-                    List<User> list = PM.CheckLogin(UserID, Password); //請自行實作檢查帳密，撈出資料
-
-                    if (list.Count == 0)
-                    {
-                        TempData["Error"] = "您輸入的帳號不存在或者密碼錯誤!";
-                        return View();
-                    }
-                    else
-                    {
-                        foreach (var Itme in list)
-                        {
-                            LevelID = Itme.LevelID.ToString();
-                        }
-
-                        LoginProcess(LevelID, UserID, false); //表單驗證方法
-                        return RedirectToAction("Index", "User");
-                    }
+                    return true;
                 }
-                return View();
+                else
+                {
+                    return false;
+                }
             }
         }
-
-        private void LoginProcess(string level, string id, bool isRemeber)
+        private void LoginProcess(string id, string username, bool isRemeber)
         {
             var now = DateTime.Now;
 
-            string roles = level;
             var ticket = new FormsAuthenticationTicket(
                 version: 1,
                 name: id.ToString(), //這邊看個人，你想放使用者名稱也可以，自行更改
                 issueDate: now,//現在時間
                 expiration: now.AddMinutes(30),//Cookie有效時間=現在時間往後+30分鐘
                 isPersistent: isRemeber,//記住我 true or false
-                userData: roles, //這邊可以放使用者名稱，而我這邊是放使用者的群組代號
+                userData: username, //這邊可以放使用者名稱，而我這邊是放使用者的群組代號
                 cookiePath: FormsAuthentication.FormsCookiePath);
 
             var encryptedTicket = FormsAuthentication.Encrypt(ticket); //把驗證的表單加密
