@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [dbo].[Order]
 (
 	[orderID] INT IDENTITY (1,1) NOT NULL,
-	[orderDate] date not null,
+	[CusName] NVARCHAR(50) not null,
 	[orderStatus] NVARCHAR (10) NULL,
-	PRIMARY KEY CLUSTERED ([orderID] ASC),
+	[OrderTotal] DECIMAL NULL, 
+    [OrderTimeStamp] TIMESTAMP NULL, 
+    PRIMARY KEY CLUSTERED ([orderID] ASC),
 )

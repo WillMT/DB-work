@@ -19,6 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                @Html.ActionLink("Order","Order","Home", null, new { @class = "nav-link" })
                 @Html.ActionLink("About", "Index", "View", null, new { @class = "nav-link" })
                 @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })
             </ul>
@@ -35,7 +36,7 @@
             <div class="col-sm-1">
                 @if (Session["Username"] != null)
                 {
-                    @Html.ActionLink("LOGOUT", "Logout", "Login", null, new { @class = "btn btn-warning btn-sm btn-block" })
+                    @Html.ActionLink("Logout", "Logout", "Admin", null, new { @class = "btn btn-warning btn-sm btn-block" })
                 }
                 else
                 {

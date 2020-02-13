@@ -69,7 +69,6 @@ namespace MVC_web.Controllers
         {
             Session.Clear();
             FormsAuthentication.SignOut();
-            Response.Redirect("~/Login.aspx");
             return RedirectToAction("Index", "Home");
         }
         private Boolean CheckUr(string username, string password)

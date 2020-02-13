@@ -135,6 +135,7 @@
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,6 +160,9 @@
     <Compile Include="Models\DB\Item.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\Models\cart.cs" />
+    <Compile Include="Models\DB\Models\cartFunction.cs" />
+    <Compile Include="Models\DB\Models\cartItem.cs" />
     <Compile Include="Models\DB\Order.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -228,9 +232,11 @@
     <Content Include="Views\item\Upload.cshtml" />
     <Content Include="Views\admin\Index.cshtml" />
     <Content Include="Views\admin\Login.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
