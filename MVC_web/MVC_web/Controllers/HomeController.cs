@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_web.Models.DB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,27 +17,18 @@ namespace MVC_web.Controllers
         {
             ViewBag.ResultMessage = TempData["ResultMessage"];
             Models.DB.MVCEntities db = new Models.DB.MVCEntities();
+            var item = (from s in db.Item select s);
+            var drink = (from s in db.Item where s.itemType == "Drink" select s);
+            var Food = (from s in db.Item where s.itemType == "Food" select s);
 
-            var itemList = (from s in db.Item select s);
-            ViewBag.IdSort = String.IsNullOrEmpty(order) ? "idnew" : "";
-            ViewBag.TypeSort = order == "Drink" ? "Food" : "Drink";
-
-            switch (order)
+            var model = new itemViewModel()
             {
-                case "idnew":
-                    itemList = itemList.OrderByDescending(s => s.itemID);
-                    break;
-                case "Drink":
-                    itemList = itemList.OrderBy(s => s.itemType.Equals("Drink")).ThenBy(s => s.itemID);
-                    break;
-                case "Food":
-                    itemList = itemList.OrderBy(s => s.itemType.Equals("Food")).ThenBy(s => s.itemID);
-                    break;
-                default:
-                    itemList = itemList.OrderBy(s => s.itemID);
-                    break;
-            }
-            return View(itemList.ToList());
+                DrinkList = drink,
+                FoodList = Food,
+                itemList = item
+            };
+
+            return View(model);
         }
         public ActionResult About()
         {

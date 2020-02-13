@@ -1,0 +1,20 @@
+﻿@{
+
+}
+<div class="container-fluid">
+    <a id="CartMenu" class="dropdown-toggle" data-toggle="dropdown">
+        Cart Total : $ XXX
+        <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="CartMenu">
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+        <div class="dropdown-divider"></div>
+        <span>
+            @Html.ActionLink("Process order", "", "", null, new { @class = "btn btn-success btn-block" })
+        </span>
+        
+    </ul>
+</div>

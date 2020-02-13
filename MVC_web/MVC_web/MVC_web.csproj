@@ -163,6 +163,7 @@
     <Compile Include="Models\DB\Models\cart.cs" />
     <Compile Include="Models\DB\Models\cartFunction.cs" />
     <Compile Include="Models\DB\Models\cartItem.cs" />
+    <Compile Include="Models\DB\Models\itemViewModel.cs" />
     <Compile Include="Models\DB\Order.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
@@ -233,6 +234,7 @@
     <Content Include="Views\admin\Index.cshtml" />
     <Content Include="Views\admin\Login.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Shared\_CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
