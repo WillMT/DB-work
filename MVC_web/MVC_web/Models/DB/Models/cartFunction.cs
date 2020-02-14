@@ -25,5 +25,20 @@ namespace MVC_web.Models.DB.Models
                 throw new InvalidOperationException("null,please check");
             }
         }
+        public static List<OrderInfo> getInfo()
+        {
+            List<OrderInfo> oInfo = new List<OrderInfo>
+            {
+                new OrderInfo
+                {
+                    OrderID = 1,
+                    CusName = "testinfo",
+                    CusPhone = "12345678",
+                    TableNo = 2
+                }
+            };
+
+            return oInfo;
+        }
     }
 }

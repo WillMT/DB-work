@@ -15,7 +15,7 @@
     }
 </a>
 
-<ul class="dropdown-menu dropdown-menu-right"" role="menu" aria-labelledby="CartMenu">
+<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="CartMenu">
 
     @if (cartNow.Count > 0)
     {
@@ -34,7 +34,7 @@
         <li class="dropdown-divider"></li>
         <li>
             <div class="col-xs-12">
-                <a onclick="" href="javascript:void(0);" class="btn btn-success btn-block btn-lg" role="button">
+                <a onclick="" href="@Url.Action("Index","Order",new { })" class="btn btn-success btn-block btn-lg" role="button">
                     Process payment
                 </a>
                 <a onclick="ClearCart()" href="javascript:void(0);" class="btn btn-danger btn-block btn-sm" role="button">

@@ -57,7 +57,7 @@
         </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">Cafe Bouquet</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -72,35 +72,42 @@
 
             </ul>
             <div id="Cart" class="dropdown dropdown-menu-left btn btn-success btn-sm">@Html.Partial("_CartPartial")</div>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+        @Html.ActionLink("© Cafe Bouquet, 2020", "Index", "Home", null, new { @class = "navbar-brand" })
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+            </ul>
+            
             @if (Session["Username"] != null)
-            {<span class="text-info">
+            {<span class="text-info col-sm-2">
                     Welcome : @Session["Username"]
                 </span>
                 <span>
-                    @Html.ActionLink("Menu", "Index", "Admin", null, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Function menu", "Index", "Admin", null, new { @class = "btn btn-primary btn-sm btn-block" })
                 </span>
             }
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 @if (Session["Username"] != null)
                 {
                     @Html.ActionLink("Logout", "Logout", "Admin", null, new { @class = "btn btn-warning btn-sm btn-block" })
                 }
                 else
                 {
-                    @Html.ActionLink("Management", "Login", "Admin", null, new { @class = "btn btn-info btn-sm btn-block" })
+                    @Html.ActionLink("Management portal", "Login", "Admin", null, new { @class = "btn btn-info btn-sm btn-block" })
                 }
             </div>
         </div>
     </nav>
-    <br />
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
 
-        @Html.ActionLink("© Cafe Bouquet, 2020", "Index", "Home", null, new { @class = "navbar-brand" })
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-    </nav>
 
     <div class="container body-content">
         @RenderBody()
