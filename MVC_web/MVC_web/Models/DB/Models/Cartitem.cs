@@ -6,7 +6,7 @@ using System.Web;
 namespace MVC_web.Models.DB.Models
 {
     [Serializable]
-    public class cartItem
+    public class CartItem
     {
         public int iID { get; set; }
         public String iName { get; set; }

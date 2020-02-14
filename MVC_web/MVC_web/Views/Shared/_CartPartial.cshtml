@@ -1,20 +1,45 @@
 ﻿@{
-
+    var cartNow = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
 }
-<div class="container-fluid">
-    <a id="CartMenu" class="dropdown-toggle" data-toggle="dropdown">
-        Cart Total : $ XXX
-        <span class="caret"></span>
-    </a>
 
-    <ul class="dropdown-menu" role="menu" aria-labelledby="CartMenu">
-        <li>test1</li>
-        <li>test2</li>
-        <li>test3</li>
+<a id="CartMenu" class="dropdown-toggle" data-toggle="dropdown">
+    @if (cartNow.Count > 0)
+    {
+        @String.Format("Total : {0} / ({1}) in cart", cartNow.TotalAmount, cartNow.Count)
+        <span class="caret"></span>
+    }
+    else
+    {
+        @String.Format("Nothing in cart")
+        <span class="caret"></span>
+    }
+</a>
+
+    <div class="dropdown-menu text-justify" role="menu" aria-labelledby="CartMenu">
+        
+            @if (cartNow.Count > 0)
+            {
+                foreach (var Citem in cartNow)
+                {
+                    <p class="dropdown-item">
+                        @Citem.iName <span> $ @Citem.iprice x @Citem.qty</span>
+                    </p>
+
+                }
+            }
+            else
+            {
+                
+                   <p class="dropdown-item"> Nothing in cart</p>
+                
+            }
+        
+
+
         <div class="dropdown-divider"></div>
         <span>
             @Html.ActionLink("Process order", "", "", null, new { @class = "btn btn-success btn-block" })
         </span>
-        
-    </ul>
-</div>
+
+    </div>
+

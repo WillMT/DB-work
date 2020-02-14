@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\adminController.cs" />
+    <Compile Include="Controllers\cartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -238,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\cart\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

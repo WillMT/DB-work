@@ -9,16 +9,16 @@ namespace MVC_web.Models.DB.Models
     public class cartFunction
     {
         [WebMethod(EnableSession = true)]
-        public static cart GetCurrCart()
+        public static Cart GetCurrCart()
         {
             if (HttpContext.Current != null)
             {
                 if (HttpContext.Current.Session["Cart"] == null)
                 {
-                    var ordercart = new cart();
+                    var ordercart = new Cart();
                     HttpContext.Current.Session["Cart"] = ordercart;
                 }
-                return(cart)HttpContext.Current.Session["Cart"];
+                return(Cart)HttpContext.Current.Session["Cart"];
             }
             else
             {

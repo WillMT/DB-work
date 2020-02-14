@@ -8,8 +8,16 @@ namespace MVC_web.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
         public ActionResult GetCart()
+        {
+            var cart = Models.DB.Models.cartFunction.GetCurrCart();
+            cart.AddItem(1);
+            return Content(String.Format("Currect Total : {0}", cart.TotalAmount));
+        }
+
+        
+        // GET: Test
+        /*public ActionResult GetCart()
         {
             var cart = Models.DB.Models.cartFunction.GetCurrCart();
             if(cart.cartItems.Count == 0)
@@ -28,6 +36,6 @@ namespace MVC_web.Controllers
                 cart.cartItems.First().qty += 1;
             }
             return Content(string.Format("Total : {0}", cart.total));
-        }
+        }*/
     }
 }
