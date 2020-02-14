@@ -18,8 +18,19 @@ namespace MVC_web.Controllers
         {
             var currCart = Models.DB.Models.cartFunction.GetCurrCart();
             currCart.AddItem(id);
+            return PartialView("_CartPartial");  
+        }
+        public ActionResult RemoveFromCart(int id)
+        {
+            var currCart = Models.DB.Models.cartFunction.GetCurrCart();
+            currCart.RemoveItem(id);
             return PartialView("_CartPartial");
-            
+        }
+        public ActionResult ClearCart()
+        {
+            var currCart = Models.DB.Models.cartFunction.GetCurrCart();
+            currCart.ClearCart();
+            return PartialView("_CartPartial");
         }
     }
 }

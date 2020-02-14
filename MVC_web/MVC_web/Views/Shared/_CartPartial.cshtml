@@ -15,31 +15,40 @@
     }
 </a>
 
-    <div class="dropdown-menu text-justify" role="menu" aria-labelledby="CartMenu">
-        
-            @if (cartNow.Count > 0)
-            {
-                foreach (var Citem in cartNow)
-                {
-                    <p class="dropdown-item">
-                        @Citem.iName <span> $ @Citem.iprice x @Citem.qty</span>
-                    </p>
+<ul class="dropdown-menu dropdown-menu-right"" role="menu" aria-labelledby="CartMenu">
 
-                }
-            }
-            else
-            {
-                
-                   <p class="dropdown-item"> Nothing in cart</p>
-                
-            }
-        
+    @if (cartNow.Count > 0)
+    {
+        foreach (var Citem in cartNow)
+        {
+            <li class="dropdown-item">
+                <span class="btn btn-warning btn-sm" onclick="RemoveFromCart('@Citem.iID')">
+                    remove
+                </span>   
+                <span class="h6">
+                    | @Citem.iName , $ @Citem.iprice x @Citem.qty
+                </span>
+            </li>
+
+        }
+        <li class="dropdown-divider"></li>
+        <li>
+            <div class="col-xs-12">
+                <a onclick="" href="javascript:void(0);" class="btn btn-success btn-block btn-lg" role="button">
+                    Process payment
+                </a>
+                <a onclick="ClearCart()" href="javascript:void(0);" class="btn btn-danger btn-block btn-sm" role="button">
+                    Clear cart
+                </a>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="dropdown-item"> Nothing in cart</li>
+    }
 
 
-        <div class="dropdown-divider"></div>
-        <span>
-            @Html.ActionLink("Process order", "", "", null, new { @class = "btn btn-success btn-block" })
-        </span>
 
-    </div>
+</ul>
 

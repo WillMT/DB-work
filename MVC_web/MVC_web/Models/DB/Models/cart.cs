@@ -87,7 +87,26 @@ namespace MVC_web.Models.DB.Models
                 this.cartItems.Add(cartItem);
                 return true;
             }
+            
+            public bool RemoveItem(int id)
+            {
+            var searchItem = this.cartItems.Where(s => s.iID == id).Select(s => s).FirstOrDefault();
+                if (searchItem == default(Models.CartItem))
+                {
 
+                }
+                else
+                {
+                    this.cartItems.Remove(searchItem);
+                }
+            return true;
+            }
+            
+            public bool ClearCart()
+            {
+            this.cartItems.Clear();
+            return true;
+            }
 
 
             #region IEnumerator
