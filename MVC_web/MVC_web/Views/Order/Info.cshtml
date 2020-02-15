@@ -1,0 +1,44 @@
+﻿@model MVC_web.Models.DB.Models.OrderViewModel
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+
+<table class="table">
+
+    @foreach (var Oinfo in this.Model.OrderinfoList)
+    {
+        <h3 class="text-center">Thank you for your order, @Oinfo.CusName</h3>
+        <h3 class="text-center">Your Order ID is : @Oinfo.OrderID</h3>
+        <h4 class="text-center text-danger">Please remember you order ID,  Go to counter for complete the payment.</h4>
+        <h4 class="text-center">Your order total amount is : $ @Oinfo.Total</h4>
+    }
+    <br />
+    <h4 class="text-info">Your order item:</h4>
+    <thead>
+        <tr>
+            <td width="70%"><b>Item name</b></td>
+            <td width="15%"><b>Price</b></td>
+            <td width="15%"><b>Quantity</b></td>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var OItemList in this.Model.OrderItemList)
+        {
+
+            <tr>
+                <td>@OItemList.iName</td>
+                <td>@OItemList.iprice</td>
+                <td>@OItemList.qty</td>
+            </tr>
+
+        }
+
+      
+    </tbody>
+</table>

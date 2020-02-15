@@ -38,8 +38,6 @@ public partial class MVCEntities : DbContext
 
     public virtual DbSet<Order> Order { get; set; }
 
-    public virtual DbSet<OrderItem> OrderItem { get; set; }
-
 }
 
 }

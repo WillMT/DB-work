@@ -35,15 +35,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderItem">
-      <EntityTypeMapping TypeName="Cafe_MVCModel.OrderItem">
-        <MappingFragment StoreEntitySet="OrderItem">
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="itemID" ColumnName="itemID" />
-          <ScalarProperty Name="itemQty" ColumnName="itemQty" />
-          <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

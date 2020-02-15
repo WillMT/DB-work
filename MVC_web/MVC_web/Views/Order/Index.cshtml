@@ -20,21 +20,11 @@
     <tbody>
         @foreach (var item in cart)
         {
-            if (cart.Count > 0)
-            {
                 <tr>
                     <td>@item.iName</td>
                     <td>@item.qty</td>
                     <td>@item.iprice</td>
                 </tr>
-            }
-            else
-            {
-                <tr>
-                    <td colspan="3">Nothing in cart.</td>
-                </tr>
-            }
-
         }
 
         <tr>
@@ -73,7 +63,7 @@
         </div>
     </div>
     <div class="col-md-offset-2 ">
-        @Html.ActionLink("Checkout", "Index", "Order", null, new { @class = "btn btn-warning btn-sm btn-block" })
+        <input type="submit" id="btnUpload" value="Upload" class="btn btn-warning btn-block" />
     </div>
 </div>
 

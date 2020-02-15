@@ -1,0 +1,27 @@
+﻿@model MVC_web.Models.DB.Models.OrderInfo
+@{
+    ViewBag.Title = "OrderCheck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
+}
+
+@using (Html.BeginForm("OrderCheck", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5 class="text-center">Please input customer info for your order</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" name="id" id="id" />
+            </div>
+        </div>
+        <div class="col-md-offset-2 ">
+            <input type="submit" id="btnUpload" value="Upload" class="btn btn-primary" />
+        </div>
+    </div>
+
+}

@@ -167,13 +167,11 @@
     <Compile Include="Models\DB\Models\cart.cs" />
     <Compile Include="Models\DB\Models\cartFunction.cs" />
     <Compile Include="Models\DB\Models\cartItem.cs" />
-    <Compile Include="Models\DB\Models\OrderItem.cs" />
+    <Compile Include="Models\DB\Models\OIL.cs" />
     <Compile Include="Models\DB\Models\itemViewModel.cs" />
     <Compile Include="Models\DB\Models\OrderInfo.cs" />
+    <Compile Include="Models\DB\Models\OrderViewModel.cs" />
     <Compile Include="Models\DB\Order.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\OrderItem.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,10 +242,16 @@
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Info.cshtml" />
+    <Content Include="Views\Order\Update.cshtml" />
+    <Content Include="Views\Order\OrderCheck.cshtml" />
+    <Content Include="Views\Order\OrderInfo.cshtml" />
+    <Content Include="Views\Order\Updated.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Deleted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\cart\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

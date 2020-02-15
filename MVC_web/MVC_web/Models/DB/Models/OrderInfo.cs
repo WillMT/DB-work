@@ -25,8 +25,12 @@ namespace MVC_web.Models.DB.Models
 
         [Display(Name ="Table no. (if have)")]
         public int TableNo { get; set; }
+        [Display(Name = "Order TotalAmount")]
+        public decimal Total { get; set; }
 
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public string OrderStatus { get; set; }
+
+        public virtual ICollection<OIL> OrderItem { get; set; }
     }
 
     /*public static List<OrderInfo> getInfo()

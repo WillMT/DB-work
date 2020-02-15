@@ -18,15 +18,6 @@ using System;
 public partial class Order
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Order()
-    {
-
-        this.OrderItem = new HashSet<OrderItem>();
-
-    }
-
-
     public int orderID { get; set; }
 
     public System.DateTime orderDate { get; set; }
@@ -36,12 +27,6 @@ public partial class Order
     public byte[] timestamp { get; set; }
 
     public string orderStatus { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<OrderItem> OrderItem { get; set; }
 
 }
 

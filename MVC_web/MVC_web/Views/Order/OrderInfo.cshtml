@@ -1,0 +1,29 @@
+﻿@model MVC_web.Models.DB.Models.OrderViewModel
+@{
+    ViewBag.Title = "OrderInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h4>here is the table fo who didn't complete the payment</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <td><b>Order ID</b></td>
+            <td><b>Customer Name</b></td>
+            <td><b>Status</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Oinfo in this.Model.OrderinfoList)
+        {
+            <tr>
+                <td>@Oinfo.OrderID</td>
+                <td>@Oinfo.CusName</td>
+                <td>@Oinfo.OrderStatus</td>
+            </tr>
+        }
+    </tbody>
+        
+</table>

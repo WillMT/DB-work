@@ -31,52 +31,9 @@
     <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="orderStatus" Type="nvarchar" MaxLength="10" />
   </EntityType>
-  <EntityType Name="OrderItem">
-    <Key>
-      <PropertyRef Name="OrderID" />
-      <PropertyRef Name="itemID" />
-    </Key>
-    <Property Name="OrderID" Type="int" Nullable="false" />
-    <Property Name="itemID" Type="int" Nullable="false" />
-    <Property Name="itemQty" Type="int" Nullable="false" />
-    <Property Name="lastUpdateDate" Type="date" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_dbo_OrderItem_dbo_Item_itemID">
-    <End Role="Item" Type="Self.Item" Multiplicity="1" />
-    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Item">
-        <PropertyRef Name="itemID" />
-      </Principal>
-      <Dependent Role="OrderItem">
-        <PropertyRef Name="itemID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_OrderItem_dbo_Order_OrderID">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="orderID" />
-      </Principal>
-      <Dependent Role="OrderItem">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="Cafe_MVCModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_dbo_OrderItem_dbo_Item_itemID" Association="Self.FK_dbo_OrderItem_dbo_Item_itemID">
-      <End Role="Item" EntitySet="Item" />
-      <End Role="OrderItem" EntitySet="OrderItem" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_OrderItem_dbo_Order_OrderID" Association="Self.FK_dbo_OrderItem_dbo_Order_OrderID">
-      <End Role="Order" EntitySet="Order" />
-      <End Role="OrderItem" EntitySet="OrderItem" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

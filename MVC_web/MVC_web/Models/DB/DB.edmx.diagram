@@ -8,10 +8,7 @@
         <EntityTypeShape EntityType="Cafe_MVCModel.admin" Width="1.5" PointX="7.125" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Cafe_MVCModel.Item" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Cafe_MVCModel.Order" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cafe_MVCModel.OrderItem" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
-        <AssociationConnector Association="Cafe_MVCModel.FK_dbo_OrderItem_dbo_Item_itemID" ManuallyRouted="false" />
-        <AssociationConnector Association="Cafe_MVCModel.FK_dbo_OrderItem_dbo_Order_OrderID" ManuallyRouted="false" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

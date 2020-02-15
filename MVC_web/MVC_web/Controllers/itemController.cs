@@ -38,7 +38,7 @@ namespace MVC_web.Controllers
             return View(itemList.ToList());
 
         }
-
+        [Authorize]
         public ActionResult Create()
         {
             List<SelectListItem> list = new List<SelectListItem>();
@@ -57,6 +57,7 @@ namespace MVC_web.Controllers
 
             return View();
         }
+        [Authorize]
 
         [HttpPost]
         public ActionResult Create(Models.DB.Item postback)
@@ -75,6 +76,8 @@ namespace MVC_web.Controllers
             return View(postback);
 
         }
+        [Authorize]
+
         public ActionResult Edit(int id)
         {
 
@@ -107,6 +110,8 @@ namespace MVC_web.Controllers
                 }
             }
         }
+        [Authorize]
+
         [HttpPost]
         public ActionResult Edit(Models.DB.Item postback)
         {

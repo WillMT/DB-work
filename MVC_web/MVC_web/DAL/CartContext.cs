@@ -17,7 +17,7 @@ namespace MVC_web.DAL
         public DbSet<CartItem> CartItems { get; set; }
         //public DbSet<cartFunction> cartFunctions { get; set; }
         public DbSet<OrderInfo> OrderInfos { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OIL> OILs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

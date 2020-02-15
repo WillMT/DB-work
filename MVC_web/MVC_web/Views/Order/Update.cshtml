@@ -1,0 +1,59 @@
+﻿@model MVC_web.Models.DB.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
+}
+
+<h2 class="text-center">Your order item</h2>
+<h5 class="text-center text-warning">Please refresh this page if you remove anyu item.</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>item</td>
+            <td>Quantity</td>
+            <td>Price</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in cart)
+        {
+            if (cart.Count > 0)
+            {
+                <tr>
+                    <td>@item.iName</td>
+                    <td>@item.qty</td>
+                    <td>@item.iprice</td>
+                </tr>
+            }
+        }
+
+        <tr>
+            <td colspan="2">Total Amount</td>
+            <td>@cart.TotalAmount</td>
+        </tr>
+    </tbody>
+</table>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5 class="text-center">Please input customer info for your order</h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                  <input type="number" name="id" />
+            </div>
+        </div>
+        <div class="col-md-offset-2 ">
+            <input type="submit" id="btnUpload" value="Upload" class="btn btn-warning btn-block" required />
+        </div>
+    </div>
+
+}

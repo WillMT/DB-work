@@ -36,54 +36,11 @@
           <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="orderStatus" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="OrderItem">
-          <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="itemID" />
-          </Key>
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="itemID" Type="int" Nullable="false" />
-          <Property Name="itemQty" Type="int" Nullable="false" />
-          <Property Name="lastUpdateDate" Type="date" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_dbo_OrderItem_dbo_Item_itemID">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="itemID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="itemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderItem_dbo_Order_OrderID">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="orderID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Cafe_MVCModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_dbo_OrderItem_dbo_Item_itemID" Association="Self.FK_dbo_OrderItem_dbo_Item_itemID">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderItem_dbo_Order_OrderID" Association="Self.FK_dbo_OrderItem_dbo_Order_OrderID">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
@@ -109,7 +66,6 @@
           <Property Name="iPrice" Type="Int32" Nullable="false" />
           <Property Name="qty" Type="Int32" Nullable="false" />
           <Property Name="imgdata" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="OrderItem" Relationship="Self.FK_dbo_OrderItem_dbo_Item_itemID" FromRole="Item" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -120,58 +76,12 @@
           <Property Name="orderTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="orderStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderItem" Relationship="Self.FK_dbo_OrderItem_dbo_Order_OrderID" FromRole="Order" ToRole="OrderItem" />
         </EntityType>
-        <EntityType Name="OrderItem">
-          <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="itemID" />
-          </Key>
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="itemID" Type="Int32" Nullable="false" />
-          <Property Name="itemQty" Type="Int32" Nullable="false" />
-          <Property Name="lastUpdateDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_dbo_OrderItem_dbo_Item_itemID" FromRole="OrderItem" ToRole="Item" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_dbo_OrderItem_dbo_Order_OrderID" FromRole="OrderItem" ToRole="Order" />
-        </EntityType>
-        <Association Name="FK_dbo_OrderItem_dbo_Item_itemID">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="itemID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="itemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderItem_dbo_Order_OrderID">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="orderID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="MVCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="Item" EntityType="Self.Item" />
           <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" />
-          <AssociationSet Name="FK_dbo_OrderItem_dbo_Item_itemID" Association="Self.FK_dbo_OrderItem_dbo_Item_itemID">
-            <End Role="Item" EntitySet="Item" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderItem_dbo_Order_OrderID" Association="Self.FK_dbo_OrderItem_dbo_Order_OrderID">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -209,16 +119,6 @@
                 <ScalarProperty Name="orderTime" ColumnName="orderTime" />
                 <ScalarProperty Name="timestamp" ColumnName="timestamp" />
                 <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderItem">
-            <EntityTypeMapping TypeName="Cafe_MVCModel.OrderItem">
-              <MappingFragment StoreEntitySet="OrderItem">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="itemID" ColumnName="itemID" />
-                <ScalarProperty Name="itemQty" ColumnName="itemQty" />
-                <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
