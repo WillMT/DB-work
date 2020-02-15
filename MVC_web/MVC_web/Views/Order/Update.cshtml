@@ -5,16 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var cart = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
 }
+<br />
+<h2 class="text-center">Check / add new item to you Order</h2>
+<h5 class="text-center text-info">Please add item into cart if you want to add new item.</h5>
+<h5 class="text-center text-info">item in cart will show below</h5>
 
-<h2 class="text-center">Your order item</h2>
-<h5 class="text-center text-warning">Please refresh this page if you remove anyu item.</h5>
 
 <table class="table">
     <thead>
         <tr>
-            <td>item</td>
-            <td>Quantity</td>
-            <td>Price</td>
+            <td class="h5">item</td>
+            <td class="h5" >Quantity</td>
+            <td class="h5">Price</td>
         </tr>
     </thead>
     <tbody>
@@ -37,23 +39,26 @@
     </tbody>
 </table>
 <br />
+<hr />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h5 class="text-center">Please input customer info for your order</h5>
+        <h5 class="text">Please input customer info for your order</h5>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group row">
-            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                  <input type="number" name="id" />
-            </div>
+            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2 h5" })
+                  <input type="number" name="id" class="col-md-9" />
         </div>
         <div class="col-md-offset-2 ">
-            <input type="submit" id="btnUpload" value="Upload" class="btn btn-warning btn-block" required />
+            <input type="submit" id="btnUpload" value="Check / Add new item" class="btn btn-warning btn-block" required />
         </div>
     </div>
 
 }
+<hr />
+    <div>
+        @Html.ActionLink("Delete Your Order!", "Delete", "Order", null, new { @class = "btn btn-block h5 btn-danger" })
+    </div>

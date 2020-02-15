@@ -5,28 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var cart = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
 }
-
-<h2 class="text-center">Remove your Order</h2>
-<h5 class="text-center text-warning">All the item will remove once you have summit.</h5>
+<br />
+<br />
+<br />
+<h3 class="text-center">Remove your Order</h3>
+<h4 class="text-center text-danger">Delete your order and your ordered item.</h4>
+<h4 class="text-center text-danger">It cannot be recover after delete submit.</h4>
+<hr />
 
 <br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h5 class="text-center">Please input customer info for your order</h5>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group row">
-            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                  <input type="number" name="id" />
-            </div>
-        </div>
-        <div class="col-md-offset-2 ">
-            <input type="submit" id="btnUpload" value="Upload" class="btn btn-warning btn-block" required />
+<div class="form-horizontal">
+    <h6 class="text-muted">Please input your order id for deletion.</h6>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group row">
+        @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2 h5" })
+        
+            <input type="number" name="id" class="col-md-6" />
+        
+        <div class="col-md-4 ">
+            <input type="submit" id="btnUpload" value="Delete your order" class="btn btn-danger btn-block" required />
         </div>
     </div>
+</div>
 
 }

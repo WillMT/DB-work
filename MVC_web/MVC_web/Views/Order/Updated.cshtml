@@ -6,8 +6,10 @@
     var cart = MVC_web.Models.DB.Models.cartFunction.GetCurrCart();
 }
 
-<h2 class="text-center">Your order item</h2>
-<h5 class="text-center text-warning">Please refresh this page if you remove anyu item.</h5>
+<h2 class="text-center">Check / Update your item</h2>
+<h5 class="text-info">Here is the ordered item for your order ID.</h5>
+<h6 class="text-info">New item will be display seperately.</h6>
+
 
 <table class="table">
     <thead>
@@ -18,16 +20,16 @@
         </tr>
     </thead>
     <tbody>
-        
-            @foreach (var ordered in Model.OrderItemList)
-            {
-                <tr>
-                    <td>@ordered.iName</td>
-                    <td>@ordered.qty</td>
-                    <td>@ordered.iprice</td>
-                </tr>
-            }   
-        
+
+        @foreach (var ordered in Model.OrderItemList)
+        {
+            <tr>
+                <td>@ordered.iName</td>
+                <td>@ordered.qty</td>
+                <td>@ordered.iprice</td>
+            </tr>
+        }
+
 
         <tr>
             <td class="text-warning">New item</td>
@@ -58,21 +60,8 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h5 class="text-center">Please input customer info for your order</h5>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group row">
-            @Html.Label("Order ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                  <input type="number" name="id" />
-            </div>
-        </div>
+    
         <div class="col-md-offset-2 ">
-            @Html.ActionLink("Update Order", "Update", new { id = Request.Params["id"] }, new { @class = "btn btn-sm btn-outline-success" })
-            @Html.ActionLink("Delete Order", "Delete", new { id = Request.Params["id"] }, new { @class = "btn btn-sm btn-outline-success" })
-            <input type="submit" id="btnUpload" value="Upload" class="btn btn-warning btn-block" />
+            @Html.ActionLink("Return to Home Page", "Index","Home","", new { @class = "btn btn-sm btn-primary btn-block" })
         </div>
-    </div>
-
 }

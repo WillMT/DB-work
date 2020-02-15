@@ -1,18 +1,24 @@
 ﻿@model MVC_web.Models.DB.Item
-
 @{
     ViewBag.Title = "Upload";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Upload</h2>
-
+<h2>Upload Image</h2>
+<hr />
 @using (Html.BeginForm("Upload", "item", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <input type="file" name="file" />
-    <input type="submit" id="btnUpload" value="Upload" />
-}
+    <div class="custom-file">
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+        <input type="file" name="file" class="custom-file-input" />
+    </div>
+    <p>
 
-<div>
-    @Html.ActionLink("Back to item List", "Index")
-</div>
+    </p>
+
+        <input type="submit" id="btnUpload" value="Upload photo" class="btn btn-warning btn-block h5"/>
+ }
+        <br />
+        <br />
+        <div>
+            @Html.ActionLink("Return to item List", "Index", "item", new { @class = "btn btn-info btn-block" })
+        </div>
