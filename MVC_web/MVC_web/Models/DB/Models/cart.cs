@@ -90,16 +90,16 @@ namespace MVC_web.Models.DB.Models
                 }
             return true;
             }
-            public List<OIL> ToOrderDetailList(int orderId)
+            public List<OIL> ToOrderDetailList(int ID)
             {
                 var result = new List<OIL>();
                 foreach (var cartItem in this.cartItems)
                 {
                     result.Add(new OIL()
                     {
-                        OID = orderId,
+                        OID = ID,
                         iName= cartItem.iName,
-                        iprice = cartItem.iprice,
+                        iprice = cartItem.Amount,
                         qty = cartItem.qty,
                         iID = cartItem.iID
                     });
