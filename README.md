@@ -30,6 +30,6 @@ Screenshots showing the application pages of the website.
 ![item](https://terbic-perfect.000webhostapp.com/ScreenShot/item.PNG)
 ![checkout](https://terbic-perfect.000webhostapp.com/ScreenShot/Checkout.PNG)
 ![LoginPage](https://terbic-perfect.000webhostapp.com/ScreenShot/login.PNG)
-![itemlist](https://terbic-perfect.000webhostapp.com/ScreenShot/itemlist.PNG)
+![itemlist](https://terbic-perfect.000webhostapp.com/ScreenShot/itemList.PNG)
 
 
