@@ -78,4 +78,9 @@ C:\Users\will\Desktop\DBA\MVC_web\MVC_web\obj\Debug\MVC_web.csproj.CopyComplete
 C:\Users\will\Desktop\DBA\MVC_web\MVC_web\obj\Debug\MVC_web.dll
 C:\Users\will\Desktop\DBA\MVC_web\MVC_web\obj\Debug\MVC_web.pdb
 C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\DropDownList_Optgroup.dll
-C:\Users\will\Desktop\DBA\MVC_web\MVC_web\obj\Debug\MVC_web.csprojAssemblyReference.cache
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Net.Http.Formatting.dll
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Web.Http.dll
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Web.Http.WebHost.dll
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Net.Http.Formatting.xml
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Web.Http.xml
+C:\Users\will\Desktop\DBA\MVC_web\MVC_web\bin\System.Web.Http.WebHost.xml
