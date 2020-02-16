@@ -16,7 +16,7 @@ Admin can View or Edit item detail and delete item for sale.
 Admin can view all orders of customers.
 
 Requirement:
-- Sytem is tested with google chrom and microsoft edge.
+- BootStrap 4 supported brower. 
 - Visual studio 2017 with SQL server express v13.0
 Internet Conncet, As some DB is hosted on azure SQL server.
 
