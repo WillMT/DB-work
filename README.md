@@ -26,6 +26,10 @@ The main browser used during the building is Google Chrome, and the Microsoft Ed
 Application Screen Shot
 Screenshots showing the application pages of the website.
 
+![index](https://terbic-perfect.000webhostapp.com/ScreenShot/index.PNG)
+![item](https://terbic-perfect.000webhostapp.com/ScreenShot/item.PNG)
+![checkout](https://terbic-perfect.000webhostapp.com/ScreenShot/Checkout.PNG)
 ![LoginPage](https://terbic-perfect.000webhostapp.com/ScreenShot/login.PNG)
+![itemlist](https://terbic-perfect.000webhostapp.com/ScreenShot/itemlist.PNG)
 
 
